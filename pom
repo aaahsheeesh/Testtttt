@@ -39,6 +39,12 @@
     </build>
 </project>
 
+    <distributionManagement>
+        <repository>
+            <id>anypoint-exchange</id>
+            <url>https://maven.anypoint.mulesoft.com/api/v1/organizations/${anypoint.orgId}/maven</url>
+        </repository>
+    </distributionManagement>
 
 
 
