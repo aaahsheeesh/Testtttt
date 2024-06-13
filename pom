@@ -7,32 +7,38 @@
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.mule.tools.maven</groupId>
-                <artifactId>mule-maven-plugin</artifactId>
-                <version>3.6.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <cloudHub2Deployment>
-                        <applicationName>${project.artifactId}</applicationName>
-                        <file>target/your-application.jar</file> <!-- Path to your JAR file -->
-                        <workerType>Micro</workerType>
-                        <workers>1</workers>
-                    </cloudHub2Deployment>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <anypoint.username>${env.ANYPOINT_USERNAME}</anypoint.username>
         <anypoint.password>${env.ANYPOINT_PASSWORD}</anypoint.password>
         <anypoint.orgId>${env.ANYPOINT_ORG_ID}</anypoint.orgId>
         <anypoint.envId>${env.ANYPOINT_ENV_ID}</anypoint.envId>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.mule.tools.maven</groupId>
+                <artifactId>mule-maven-plugin</artifactId>
+                <version>3.6.0</version>
+                <configuration>
+                    <cloudHubDeployment>
+                        <applicationName>${project.artifactId}</applicationName>
+                        <environment>${anypoint.envId}</environment>
+                        <workers>
+                            <type>Micro</type>
+                            <amount>1</amount>
+                        </workers>
+                        <muleVersion>
+                            <version>4.3.0</version>
+                        </muleVersion>
+                        <region>us-east-1</region>
+                    </cloudHubDeployment>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
+
 
 
 
