@@ -1,0 +1,72 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId>
+    <artifactId>my-mule-deploy-project</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.mule.tools.maven</groupId>
+                <artifactId>mule-maven-plugin</artifactId>
+                <version>3.6.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <cloudHub2Deployment>
+                        <applicationName>${project.artifactId}</applicationName>
+                        <file>target/your-application.jar</file> <!-- Path to your JAR file -->
+                        <workerType>Micro</workerType>
+                        <workers>1</workers>
+                    </cloudHub2Deployment>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <anypoint.username>${env.ANYPOINT_USERNAME}</anypoint.username>
+        <anypoint.password>${env.ANYPOINT_PASSWORD}</anypoint.password>
+        <anypoint.orgId>${env.ANYPOINT_ORG_ID}</anypoint.orgId>
+        <anypoint.envId>${env.ANYPOINT_ENV_ID}</anypoint.envId>
+    </properties>
+</project>
+
+
+
+
+
+
+
+
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <servers>
+        <server>
+            <id>anypoint-exchange</id>
+            <username>your-username</username>
+            <password>your-password</password>
+        </server>
+    </servers>
+</settings>
+
+
+
+
+
+
+
+
+
+
+
+
+
+export ANYPOINT_USERNAME=your-username
+export ANYPOINT_PASSWORD=your-password
+export ANYPOINT_ORG_ID=your-org-id
+export ANYPOINT_ENV_ID=your-env-id
